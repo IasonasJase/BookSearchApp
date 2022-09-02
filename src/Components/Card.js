@@ -43,7 +43,8 @@ const Card = ({ book }) => {
                 <div className="bottom flex flex-col">
                   <p className="p-3">{amount}&#x20AC;</p>
                   <button
-                    className="bg-transparent hover:bg-purple-500 text-white-600 font-semibold hover:text-white py-2 px-4 border border-white-500 hover:border-transparent rounded"
+                    className="bg-transparent hover:bg-amber-600 text-white-600 font-semibold hover:text-white 
+                    py-2 px-4 border border-gray-400 hover:border-transparent rounded-lg"
                     onClick={() => handleAddToCart(item)}
                   >
                     Add to Cart

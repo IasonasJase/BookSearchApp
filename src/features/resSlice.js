@@ -12,7 +12,7 @@ export const getBooks = createAsyncThunk("books/getBooks", async ({ search }) =>
       "https://www.googleapis.com/books/v1/volumes?q=" +
         search +
         "&key=AIzaSyB-BhfMivV1lWNG8H1RJ8_r3mDCws0GTIw" +
-        "&maxResults=20"
+        "&maxResults=40"
     )
     .then((res) => res?.data.items);
 });

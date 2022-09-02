@@ -21,38 +21,48 @@ const Cart = () => {
 
   return (
     <div className="italic">
-      <h2 className="text-center pt-10 text-3xl font-semibold text-white">Shopping Cart</h2>
+      <h2 className="text-center pt-10 text-3xl font-sans not-italic font-semibold text-white">Shopping Cart</h2>
       {cartList.cartItems.length === 0 ? (
         <div>
-          <p className="text-center pt-10 text-xl font-bold">Your cart is currently empty</p>
-          <div>
-            <Link to="/">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-6 h-6 block m-auto hover:text-purple-500 "
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M20.25 12a.75.75 0 01-.75.75H6.31l5.47 5.47a.75.75 0 11-1.06 1.06l-6.75-6.75a.75.75 0 010-1.06l6.75-6.75a.75.75 0 111.06 1.06l-5.47 5.47H19.5a.75.75 0 01.75.75z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </Link>
+          <div className="flex justify-center my-6">
+            <div
+              className="flex flex-col w-full p-8 text-gray-800 bg-zinc-100 shadow-lg 
+                            pin-r pin-y md:w-4/5 lg:w-4/5  rounded-md"
+            >
+              <div className="flex-1">
+                <table className="w-full text-sm lg:text-base" cellSpacing="0">
+                  <tr>
+                    <td>
+                      <p className="text-center pt-10 text-xl font-bold">
+                        Your cart is currently empty. Please, press "Continue Shopping" to add Books into your shopping
+                        Cart!
+                      </p>
+                      <Link to="/">
+                        <div className="flex font-semibold text-indigo-600 text-sm mt-10">
+                          <svg className="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512">
+                            <path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" />
+                          </svg>
+                          Continue Shopping
+                        </div>
+                      </Link>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       ) : (
         <div>
           <div className="flex justify-center my-6">
             <div
-              className="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg 
-                            pin-r pin-y md:w-4/5 lg:w-4/5 opacity-80 rounded-md"
+              className="flex flex-col w-full p-8 text-gray-800 bg-zinc-100 shadow-lg 
+                            pin-r pin-y md:w-4/5 lg:w-4/5  rounded-md"
             >
               <div className="flex-1">
                 <table className="w-full text-sm lg:text-base" cellSpacing="0">
                   <thead>
-                    <tr className="h-12 uppercase">
+                    <tr className="h-12 uppercase text-xl not-italic">
                       <th className="hidden md:table-cell"></th>
                       <th className="text-left">Product</th>
                       <th className="lg:text-right text-left pl-5 lg:pl-0">
@@ -78,9 +88,10 @@ const Cart = () => {
                           </td>
                           <td>
                             <p className="mb-2 md:ml-4 font-semibold">{item.volumeInfo.title}</p>
+                            <p className="pl-5 pb-5 font-sans not-italic">{item.volumeInfo.authors[0]}</p>
                             <button
-                              className="bg-transparent hover:bg-red-500 text-grey-700 font-semibold
-                             hover:text-white py-2 px-4 border border-grey-700 hover:border-transparent 
+                              className="bg-transparent hover:bg-red-500 text-gray-700 font-semibold
+                             hover:text-white py-2 px-4 border border-gray-300 hover:border-transparent 
                              rounded ml-5"
                               onClick={() => handleRemoveFromCart(item)}
                             >
@@ -88,19 +99,21 @@ const Cart = () => {
                             </button>
                           </td>
                           <td className="justify-center md:justify-end md:flex mt-12">
-                            <div className="w-20 h-10">
+                            <div className="w-20 h-10 mr-2.5">
                               <div className="relative flex flex-row w-full h-8">
                                 <input
                                   type="text"
                                   readOnly
                                   value={item.cartQuantity}
-                                  className="w-full font-semibold text-center  text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black"
+                                  className="w-full font-semibold text-center rounded text-gray-700 bg-gray-300 
+                                  outline-none focus:outline-none hover:text-black focus:text-black
+                                  border   border-gray-400"
                                 />
                               </div>
                               <p>
                                 <button
                                   className="bg-transparent hover:bg-green-500 text-grey-700 font-semibold
-                             hover:text-white w-10 h-7 border  border-grey-700 hover:border-transparent 
+                             hover:text-white w-10 h-7 border   border-gray-400 hover:border-transparent 
                              rounded"
                                   onClick={() => handleIncreaseItemNumber(item)}
                                 >
@@ -108,7 +121,7 @@ const Cart = () => {
                                 </button>
                                 <button
                                   className="bg-transparent hover:bg-red-500 text-grey-700 font-semibold
-                             hover:text-white w-10 h-7 border border-grey-700 hover:border-transparent 
+                             hover:text-white w-10 h-7  border border-gray-400 hover:border-transparent 
                              rounded"
                                   onClick={() => handleReduceItemNumber(item)}
                                 >
@@ -117,12 +130,12 @@ const Cart = () => {
                               </p>
                             </div>
                           </td>
-                          <td className="hidden text-right md:table-cell lg:pr-5 pb-12">
+                          <td className="hidden text-right md:table-cell lg:pr-8 pb-12">
                             <span className="text-sm lg:text-base font-medium">
                               {(item.saleInfo.listPrice && item.saleInfo.listPrice.amount).toFixed(2)}&#x20AC;
                             </span>
                           </td>
-                          <td className="text-right lg:pr-5 pb-12">
+                          <td className="text-right lg:pr-8 pb-12">
                             <span className="text-sm lg:text-base font-medium">
                               {(item.saleInfo.listPrice.amount * item.cartQuantity).toFixed(2)}&#x20AC;
                             </span>

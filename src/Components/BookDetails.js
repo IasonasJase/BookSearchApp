@@ -10,8 +10,8 @@ const BookDetails = () => {
   let thumbnail = books[0].volumeInfo.imageLinks && books[0].volumeInfo.imageLinks.smallThumbnail;
   return (
     <div
-      className="flex flex-col mt-12 ml-20 mb-12 bg-white shadow-lg 
-           rounded-md w-4/6 p-3 pb-10 opacity-70"
+      className="flex flex-col mt-12 ml-20 mb-12 bg-zinc-200 shadow-lg 
+           rounded-md w-4/6 p-3 pb-10"
     >
       <div className="basis-full">
         <h2 className="text-4xl font-semibold tracking-wider italic">{books[0].volumeInfo.title}</h2>
@@ -21,13 +21,13 @@ const BookDetails = () => {
       <div className="mt-5">
         <h2 className="text-2xl font-semibold tracking-wider italic">Description</h2>
         <p className="center p-2">{books[0].volumeInfo.description}</p>
-        <h2 className="text-2xl font-semibold tracking-wider italic">Authors</h2>
+        <h2 className="text-2xl font-semibold tracking-wider italic">Author(s)</h2>
         <p className="p-2">
           {books[0].volumeInfo.authors.map((item) => (
             <p>{item}</p>
           ))}
         </p>
-        <h2 className="text-2xl font-semibold tracking-wider italic">Genres</h2>
+        <h2 className="text-2xl font-semibold tracking-wider italic">Genre</h2>
         <p className="p-2">{books[0].volumeInfo.categories}</p>
         <h2 className="text-2xl font-semibold tracking-wider italic">Publisher</h2>
         <p className="p-2">{books[0].volumeInfo.publisher}</p>
