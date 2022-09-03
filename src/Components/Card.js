@@ -2,25 +2,21 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../features/cartSlice";
-import { toast } from "react-toastify";
+import { useSnackbar } from "notistack";
 
 const Card = ({ book }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const arrayOfBooks = [];
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
+
     if (arrayOfBooks.includes(product)) {
-      toast.info("Increased Product Quantity", {
-        position: "bottom-left",
-        autoClose: 500,
-      });
+      enqueueSnackbar("Incerased product Quantity", { variant: "info", autoHideDuration: 500 });
     } else {
-      toast.success("Product added to cart", {
-        position: "bottom-left",
-        autoClose: 1000,
-      });
+      enqueueSnackbar("Product added to cart", { variant: "success", autoHideDuration: 500 });
       arrayOfBooks.push(product);
     }
   };
@@ -41,9 +37,9 @@ const Card = ({ book }) => {
                   onClick={() => navigate(`/book/:${item.id}`)}
                 />
                 <div className="bottom flex flex-col">
-                  <p className="p-3">{amount}&#x20AC;</p>
+                  <p className="p-3 font-bold">{amount}&#x20AC;</p>
                   <button
-                    className="bg-transparent hover:bg-amber-600 text-white-600 font-semibold hover:text-white 
+                    className="bg-transparent hover:bg-amber-600 text-white-600 font-bold hover:text-white 
                     py-2 px-4 border border-gray-400 hover:border-transparent rounded-lg"
                     onClick={() => handleAddToCart(item)}
                   >

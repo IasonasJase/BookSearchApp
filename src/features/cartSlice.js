@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
+
 //import { Howl, Howler } from "howler";
 
 //const audioClips = [{ sound: add, label: "add" }];
@@ -32,13 +33,7 @@ export const cartSlice = createSlice({
       state.cartItems.map((cartItem) => {
         if (cartItem.id === action.payload.id) {
           const nextCartItems = state.cartItems.filter((item) => item.id !== cartItem.id);
-
           state.cartItems = nextCartItems;
-
-          toast.error("Product removed from cart", {
-            position: "bottom-left",
-            autoClose: 1000,
-          });
         }
         localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
         return state;

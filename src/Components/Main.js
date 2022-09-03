@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "./Card";
 import { getBooks } from "../features/resSlice";
-import bookimg from "../assets/bookimg.jpg";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -43,13 +42,14 @@ const Main = () => {
             </h2>
           </div>
           <div className="mt-16 ml-4 flex flex-col items-center">
-            <label className="block mb-2 text-sm font-medium text-red-100 dark:text-gray-300">
+            <label className="block mb-2 text-lg font-medium text-red-100 dark:text-gray-300">
               Search by Book Title or Author
             </label>
             <div className="flex flex-row">
               <input
-                className="bg-blue-50 border border-blue-400 text-gray-600 text-sm rounded-lg
-               focus:border-blue-600 block  p-2.5 dark:bg-gray-700 flex-grow-2
+                className="bg-blue-50 border border-blue-400 text-gray-600 text-sm 
+               focus:border-blue-600 block  p-2.5 dark:bg-gray-700 lg:w-[600px] 
+                md:w-[500px] rounded xs:w-[300px]
                placeholder-gray-300 dark:text-white focus:outline-none focus:bg-white"
                 type="text"
                 placeholder="e.g. Stephen King"
@@ -59,8 +59,8 @@ const Main = () => {
               />
               <button
                 onClick={searchBook2}
-                className="bg-blue-50 hover:bg-indigo-200 text-gray-400 w-9 h-10 
-           hover:text-amber-700 dark:text-white dark:bg-gray-700 rounded-lg"
+                className=" border-blue-400 text-gray-400 w-9 h-10.1 
+           hover:text-amber-700 dark:text-white dark:bg-gray-700  -ml-8 "
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

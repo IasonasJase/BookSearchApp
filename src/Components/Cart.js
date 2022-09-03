@@ -2,13 +2,16 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { removeFromCart, reduceItemNumber, addToCart } from "../features/cartSlice";
+import { useSnackbar } from "notistack";
 
 const Cart = () => {
   const cartList = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleRemoveFromCart = (product) => {
     dispatch(removeFromCart(product));
+    enqueueSnackbar("Product removed from Cart", { variant: "error", autoHideDuration: 500 });
   };
 
   const handleReduceItemNumber = (product) => {
@@ -62,7 +65,7 @@ const Cart = () => {
               <div className="flex-1">
                 <table className="w-full text-sm lg:text-base" cellSpacing="0">
                   <thead>
-                    <tr className="h-12 uppercase text-xl not-italic">
+                    <tr className="h-12 uppercase text-xl not-italic border-b-[6px]">
                       <th className="hidden md:table-cell"></th>
                       <th className="text-left">Product</th>
                       <th className="lg:text-right text-left pl-5 lg:pl-0">
@@ -78,7 +81,7 @@ const Cart = () => {
                   <tbody>
                     {cartList.cartItems &&
                       cartList.cartItems.map((item) => (
-                        <tr className="" key={item.id}>
+                        <tr className="border-b-4" key={item.id}>
                           <td className="hidden pb-4 pt-4 md:table-cell">
                             <img
                               className="max-h-40"

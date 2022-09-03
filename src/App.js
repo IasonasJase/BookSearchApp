@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import BookDetails from "./Components/BookDetails";
 import Cart from "./Components/Cart";
 import Navbar from "./Components/Navbar";
-import Footer from "./Components/Footer";
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/book/:id" element={<BookDetails />} />
       </Routes>
-      <Footer />
     </>
   );
 }
