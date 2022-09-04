@@ -80,7 +80,6 @@ const Main = () => {
             </div>
           </div>
         </div>
-
         <div className="container flex flex-col justify-center items-center">
           <Card book={books} />
         </div>

@@ -30,7 +30,7 @@ const Card = ({ book }) => {
         let amount = item.saleInfo.listPrice && item.saleInfo.listPrice.amount;
         if (thumbnail !== undefined && amount !== undefined) {
           return (
-            <div key={item.id}>
+            <div key={item.id} className="flex flex-col justify-center items-center">
               <div className="card bg-slate-200">
                 <img
                   className="h-full cursor-pointer w-full rounded-md opacity-100"
