@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This project is a book search application using the google book api to fetch relevant books based to the input of the user. 
+This project uses 3 pages navigating through them with react-routing, redux for state managment and tailwind css for the 
+styling of the components.
+
 ## Available Scripts
 
 In the project directory, you can run:
