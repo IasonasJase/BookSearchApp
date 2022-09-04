@@ -1,9 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-
-//import { Howl, Howler } from "howler";
-
-//const audioClips = [{ sound: add, label: "add" }];
+import { Howl } from "howler";
+import bookSound from "../audioClips/booksound.mp3";
+import deleteSound from "../audioClips/deleteSound.mp3";
 
 const initialState = {
   cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : [],
@@ -17,6 +16,11 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart(state, action) {
       const index = state.cartItems.findIndex((item) => item.id === action.payload.id);
+
+      var sound = new Howl({
+        src: bookSound,
+      });
+      sound.play();
 
       if (index >= 0) {
         state.cartItems[index] = {
@@ -32,6 +36,11 @@ export const cartSlice = createSlice({
     removeFromCart(state, action) {
       state.cartItems.map((cartItem) => {
         if (cartItem.id === action.payload.id) {
+          var sound = new Howl({
+            src: deleteSound,
+          });
+          sound.play();
+
           const nextCartItems = state.cartItems.filter((item) => item.id !== cartItem.id);
           state.cartItems = nextCartItems;
         }
@@ -44,12 +53,6 @@ export const cartSlice = createSlice({
 
       if (state.cartItems[itemIndex].cartQuantity > 1) {
         state.cartItems[itemIndex].cartQuantity -= 1;
-
-        // toast.info("Reduced Product Quantity", {
-        //   position: "bottom-left",
-        //   closeOnClick: true,
-        //   autoClose: 500,
-        // });
       } else if (state.cartItems[itemIndex].cartQuantity === 1) {
         const nextCartItems = state.cartItems.filter((item) => item.id !== action.payload.id);
 

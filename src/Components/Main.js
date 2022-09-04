@@ -23,7 +23,7 @@ const Main = () => {
   return (
     <>
       <div
-        className={books.length >= 1 ? "h-screen flex flex-col" : "h-screen flex flex-col justify-center items-center"}
+        className={books.length >= 1 ? "h-screen flex flex-col" : "h-[750px] flex flex-col justify-center items-center"}
       >
         {/* <img className={books.length <= 1 ? "w-80 h-80 absolute top-1 " : "hidden"} src={bookimg} alt="" /> */}
         <div className="flex flex-col mt-12">
@@ -81,7 +81,7 @@ const Main = () => {
           </div>
         </div>
 
-        <div className="container">
+        <div className="container flex flex-col justify-center items-center">
           <Card book={books} />
         </div>
       </div>

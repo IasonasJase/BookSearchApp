@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../features/cartSlice";
 import { useSnackbar } from "notistack";
+import { Howl } from "howler";
+import bookSound from "../audioClips/booksound.mp3";
 
 const Card = ({ book }) => {
   const navigate = useNavigate();
@@ -34,7 +36,13 @@ const Card = ({ book }) => {
                   className="h-full cursor-pointer w-full rounded-md opacity-100"
                   src={thumbnail}
                   alt=""
-                  onClick={() => navigate(`/book/:${item.id}`)}
+                  onClick={() => {
+                    navigate(`/book/:${item.id}`);
+                    var sound = new Howl({
+                      src: bookSound,
+                    });
+                    sound.play();
+                  }}
                 />
                 <div className="bottom flex flex-col">
                   <p className="p-3 font-bold">{amount}&#x20AC;</p>
